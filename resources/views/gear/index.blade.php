@@ -21,6 +21,8 @@
 												@endforeach
 											</ul>
 										@endif
+
+										<a href="/gear/create"><button class="btn btn-primary float-right">Add gear</button></a>
                 </div>
             </div>
         </div>

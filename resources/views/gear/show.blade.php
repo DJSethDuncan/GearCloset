@@ -2,21 +2,27 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{$gear->name}}<small class="float-right">"<i>{{$gear->nickname}}</i>"</small></div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header">{{$gear->name}}
+					@if (strlen($gear->nickname) > 0)
+						<small class="float-right">"<i>{{$gear->nickname}}</i>"</small>
+					@endif
+				</div>
+				<div class="card-body">
+					@if (session('status'))
+						<div class="alert alert-success" role="alert">
+							{{ session('status') }}
+						</div>
+					@endif
+					{!!Form::open(['action' => ['GearController@destroy', $gear->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+						{{Form::hidden('_method', 'DELETE')}}
+						{{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+					{!!Form::close()!!}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection

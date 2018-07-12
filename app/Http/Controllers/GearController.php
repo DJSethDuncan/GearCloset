@@ -27,7 +27,7 @@ class GearController extends Controller
      */
     public function create()
     {
-        //
+			return view('gear.create');
     }
 
     /**
@@ -38,7 +38,17 @@ class GearController extends Controller
      */
     public function store(Request $request)
     {
-        //
+			$this->validate($request, [
+				'name' => 'required'
+			]);
+			// Create Post
+			$gear = new Gear;
+			$gear->name = $request->input('name');
+			$gear->nickname = $request->input('nickname');
+			$gear->user_id = auth()->user()->id;
+			$gear->save();
+
+			return redirect('/gear')->with('success', 'Gear added');
     }
 
     /**
@@ -84,6 +94,8 @@ class GearController extends Controller
      */
     public function destroy($id)
     {
-        //
+			$gear = Gear::find($id);
+			$gear->delete();
+			return redirect('/gear')->with('success', 'Gear Removed');
     }
 }
