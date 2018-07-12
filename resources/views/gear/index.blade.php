@@ -14,7 +14,13 @@
                         </div>
                     @endif
 
-                    Gear goes here
+										@if (count($user->gear) > 0)
+											<ul>
+												@foreach ($user->gear as $item)
+													<li><a href='/gear/{{$item->id}}'>{{$item->name}}</a></li>
+												@endforeach
+											</ul>
+										@endif
                 </div>
             </div>
         </div>
