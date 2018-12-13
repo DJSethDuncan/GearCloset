@@ -15,10 +15,7 @@
 							{{ session('status') }}
 						</div>
 					@endif
-					{!!Form::open(['action' => ['GearController@destroy', $gear->id], 'method' => 'POST', 'class' => 'float-right'])!!}
-						{{Form::hidden('_method', 'DELETE')}}
-						{{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-					{!!Form::close()!!}
+						<a href="./{{$gear->id}}/edit"><button class="btn btn-primary float-right">Edit</button></a>
 				</div>
 			</div>
 		</div>

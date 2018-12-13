@@ -71,7 +71,8 @@ class GearController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gear = Gear::find($id);
+				return view('gear.edit')->with('gear',$gear);
     }
 
     /**
